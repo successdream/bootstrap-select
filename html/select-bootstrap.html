@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>多选</title>
+		<link rel="stylesheet" href="../plugin/bootstrap-3.3.7/css/bootstrap.css" />
+		<link rel="stylesheet" href="../plugin/bootstrap-select/dist/css/bootstrap-select.css" />
+		<script src="../plugin/jquery-1.9.1/jquery-1.9.1.min.js"></script>
+		<script src="../plugin/bootstrap-3.3.7/js/bootstrap.js"></script>
+		<script src="../plugin/bootstrap-select/dist/js/bootstrap-select.js"></script>
+	</head>
+	<body>
+		<select id="select-role"  class=" select-box form-control" multiple>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+			
+		</select>
+		<script>
+			$('#select-role').selectpicker({
+			// 宽度
+			width: 200,
+			// 数量
+			size: 4,
+			// 坠落方式
+			dropdownAlignRight: 'auto',
+			// 分割方式
+			multipleSeparator: ',',
+			// 未有东西选中时的状态
+			noneSelectedText: '请输入用户角色',
+			// 添加搜索框
+			liveSearch: true,
+			// 不区分重音搜索
+			liveSearchNormalize: true,
+			// 搜索框默认值
+			liveSearchPlaceholder: '请输入内容',
+			// 设置字体图标   此选项为默认
+			tickIcon: 'glyphicon-ok'
+		});
+		//选择好内容，之后触发，还未隐藏选择项
+		$('#select-role').on('hidden.bs.select', function (e) {
+			//获取bootstrap-select的选中值
+            var getSelectdData = $('#select-role').find('option:selected');
+            var selectVale=[];
+            $.each(getSelectdData,function(index,item){
+            	selectVale.push(item.value);
+            })
+      		console.log(selectVale);
+     	});
+     	
+       //选择好内容，之后触发，还未隐藏选择项
+		$('#select-role').on('changed.bs.select', function (e) {
+      		alert("输入框的值变化触发");
+     	});
+//   	//选择好内容，之后触发，还未隐藏选择项
+		$('#select-role').on('hidden.bs.select', function (e) {
+      		alert("选择好-隐藏之间触发");
+     });
+		</script>
+	</body>
+</html>
